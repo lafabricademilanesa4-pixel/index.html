@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Secciones</title>
+    <style>
+        /* --- ESTILOS GENERALES Y BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+        }
+
+        /* --- GRILLA DE SECCIONES (PÁGINA PRINCIPAL) --- */
+        .grid-secciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta-seccion {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .tarjeta-seccion:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Contenedor de la carátula */
+        .caratula-wrapper {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background-color: #e0e0e0;
+        }
+
+        .caratula-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Ajuste específico para cuando usas enlaces de ImgBB directo */
+        .placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .info-seccion {
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .info-seccion h2 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .info-seccion p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* --- PÁGINAS EMERGENTES (MODALES INTERNOS) --- */
+        .overlay-emergente {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Al llamarse mediante el ID (Ancla CSS), se activa la vista */
+        .overlay-emergente:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .ventana-articulos {
+            background: white;
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh
